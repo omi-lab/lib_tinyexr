@@ -8882,7 +8882,7 @@ static bool hufBuildDecTable(const long long *hcode,  // i : encoding table
         unsigned int *p = pl->p;
         pl->p = new unsigned int[pl->lit];
 
-        for (size_t i = 0; i < pl->lit - 1; ++i) pl->p[i] = p[i];
+        for (size_t i = 0; i < size_t(pl->lit - 1); ++i) pl->p[i] = p[i];
 
         delete[] p;
       } else {
