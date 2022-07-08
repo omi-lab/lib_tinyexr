@@ -3,5 +3,5 @@ TEMPLATE = lib
 
 DEFINES += LIB_TINYEXR_LIBRARY
 
-HEADERS += inc/lib_tinyexr/tinyexr.h
+HEADERS += inc/tinyexr.h
 SOURCES += src/tinyexr.cpp
