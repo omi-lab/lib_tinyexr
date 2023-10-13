@@ -980,8 +980,6 @@ namespace miniz {
 //#define MINIZ_NO_MALLOC
 
 #if defined(__TINYC__) && (defined(__linux) || defined(__linux__))
-// TODO: Work around "error: include file 'sys\utime.h' when compiling with tcc
-// on Linux
 #define MINIZ_NO_TIME
 #endif
 
@@ -2521,11 +2519,6 @@ const char *mz_error(int err) {
   MZ_MACRO_END
 #define TINFL_CR_FINISH }
 
-// TODO: If the caller has indicated that there's no more input, and we attempt
-// to read beyond the input buf, then something is wrong with the input because
-// the inflator never
-// reads ahead more than it needs to. Currently TINFL_GET_BYTE() pads the end of
-// the stream with 0's in this scenario.
 #define TINFL_GET_BYTE(state_index, c)                                 \
   do {                                                                 \
     if (pIn_buf_cur >= pIn_buf_end) {                                  \
@@ -12296,7 +12289,6 @@ int LoadEXRWithLayer(float **out_rgba, int *width, int *height,
     }
   }
 
-  // TODO: Probably limit loading to layers (channels) selected by layer index
   {
     int ret = LoadEXRImageFromFile(&exr_image, &exr_header, filename, err);
     if (ret != TINYEXR_SUCCESS) {
